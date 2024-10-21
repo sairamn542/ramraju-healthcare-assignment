@@ -1,12 +1,11 @@
 .section2 {
     padding: 40px;
-    background-color: #f8f9fa; /* Light background color */
+    background-color: #f8f9fa; 
 }
 
 .cards-container {
     display: flex;
-    justify-content: space-between; /* Spacing between the cards */
-    flex-wrap: wrap;
+    justify-content: space-between; 
     gap: 20px;
 }
 
@@ -14,28 +13,30 @@
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-    max-width: 200px; /* Fixed width for cards similar to the provided image */
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
+    max-width: 200px; 
     width: 100%;
     text-align: center;
     padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow: hidden;
+    cursor: pointer;
 }
 
 .crd-header img {
-    width: 100%;
-    height: 130px;
+    width: 90%;
+    height: 100px;
     object-fit: cover;
-    border-radius: 10px 10px 0 0;
+    border-radius: 18px;
 }
 
 .crd-body {
     font-size: 1rem;
     font-weight: 500;
     padding: 15px 0 10px;
-    color: #4A4A4A; /* Darker font for card titles */
+    color: #4A4A4A;
 }
 
 .crd-footer {
@@ -43,20 +44,26 @@
 }
 
 .crd-button {
-    background-color: #4d5685; /* Button background color */
+    background-color: #4d5685;
     color: white;
     border: none;
     padding: 8px 15px;
-    border-radius: 25px; /* Fully rounded corners */
-    font-size: 0.85rem; /* Smaller font size similar to the provided image */
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
+    border-radius: 25px;
+    font-size: 0.85rem;
+    transition: background-color 0.3s ease-in;
 }
 
 .crd-button:hover {
-    background-color: #3b4271;
+    background-color: #FF7A00;
 }
 
 .crd:hover {
-    transform: translateY(-5px); /* Card hover effect */
+    transform: scale(1.1); 
+    border: 2px solid #FF7A00;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.crd.active {
+    border: 2px solid #4d5685;
+
 }

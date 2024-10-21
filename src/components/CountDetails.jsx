@@ -19,25 +19,36 @@ function CountDetails() {
     });
 
     const targetCounts = {
-      doctors: 12000,
-      labs: 1700,
-      hospitals: 2000,
-      medicalStores: 300,
+      doctors: 100,
+      labs: 10,
+      hospitals: 20,
+      medicalStores: 30,
     };
 
     const incrementCounts = () => {
       setCounts((prev) => ({
-        doctors: Math.floor(prev.doctors + 100, targetCounts.doctors),
-        labs: Math.floor(prev.labs + 10, targetCounts.labs),
-        hospitals: Math.floor(prev.hospitals + 10, targetCounts.hospitals),
-        medicalStores: Math.floor(prev.medicalStores + 5, targetCounts.medicalStores),
+        doctors: Math.min(prev.doctors + 1, targetCounts.doctors),
+        labs: Math.min(prev.labs + 1, targetCounts.labs),
+        hospitals: Math.min(prev.hospitals + 1, targetCounts.hospitals),
+        medicalStores: Math.min(prev.medicalStores + 1, targetCounts.medicalStores),
       }));
     };
 
-    const interval = setInterval(incrementCounts, 100);
+    const interval = setInterval(() => {
+      incrementCounts();
+    }, 50);
+
+    if (
+      counts.doctors === targetCounts.doctors &&
+      counts.labs === targetCounts.labs &&
+      counts.hospitals === targetCounts.hospitals &&
+      counts.medicalStores === targetCounts.medicalStores
+    ) {
+      clearInterval(interval);
+    }
 
     return () => clearInterval(interval);
-  }, []);
+  }, [counts]);
 
   return (
     <div className="count-details section2" data-aos="fade-up">
