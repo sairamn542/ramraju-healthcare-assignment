@@ -1,0 +1,20 @@
+.img-list {
+    background-color: rgb(15, 15, 133);
+    color: white;
+    text-align: center;
+    padding: 13px;
+}
+/* .img-list img {
+    height: 35px;
+    width: 35px;
+    margin-left: 10px;
+    background: white;
+} */
+ .img-list span {
+    font-size: 30px;
+    margin-left: 10px;
+ }
+.img-list h5 {
+    margin-top: 10px;
+    font-size: 15px;
+}

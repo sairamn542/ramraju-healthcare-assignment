@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './MedicalSpecialities.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-function MedicalSpeciallities() {
+function MedicalSpecialities() {
   const [selectedCard, setSelectedCard] = useState(null);
+  const cardsContainerRef = useRef(null); // Reference to the container holding cards
 
   useEffect(() => {
     AOS.init({
@@ -12,6 +13,17 @@ function MedicalSpeciallities() {
       easing: 'ease-in-out',
       once: true,
     });
+
+    const handleClickOutside = (event) => {
+      if (cardsContainerRef.current && !cardsContainerRef.current.contains(event.target)) {
+        setSelectedCard(null);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
   }, []);
 
   const specialties = [
@@ -33,10 +45,10 @@ function MedicalSpeciallities() {
 
   return (
     <div>
-      <h2 className='text-center mt-4' style={{color : '#4d5685'}}>More Specialities</h2>
+      <h2 className='text-center mt-4' style={{ color: '#4d5685' }}>More Specialities</h2>
       <div className='section2'>
         <div data-aos="fade-up">
-          <div className='cards-container mt-2'>
+          <div className='cards-container mt-2' ref={cardsContainerRef}>
             {specialties.map((speciality, index) => (
               <div 
                 className={`crd ${selectedCard === index ? 'active' : ''}`}
@@ -61,4 +73,4 @@ function MedicalSpeciallities() {
   );
 }
 
-export default MedicalSpeciallities;
+export default MedicalSpecialities;

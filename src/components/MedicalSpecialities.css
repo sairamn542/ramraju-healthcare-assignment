@@ -65,5 +65,7 @@
 
 .crd.active {
     border: 2px solid #4d5685;
-
+}
+.crd .inactive {
+    border: none;
 }
